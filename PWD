@@ -1,0 +1,45 @@
+import java.util.Scanner;
+class Password_Programs
+{
+	public static void main(String[] args) throws InterruptedException 
+	{
+		
+		Scanner s=new Scanner(System.in);
+
+		int pin1 = 1212;
+		int time = 5000;
+
+		outerLoop:
+		for(; ;)
+		{
+			int attempt = 3;
+			System.out.println("***** Welcome *****");
+			do{
+				System.out.print("Enter Your Pin: ");
+				int pin2 = s.nextInt();
+				if(pin1 == pin2)
+				{
+					System.out.println("Phone Unlocked");
+					break outerLoop;
+				}
+				else 
+				{
+					System.out.println("Wrong Pin attempts left "+ (attempt-1));
+					System.out.println();
+				}
+				attempt --;
+			}
+			while (attempt>0);
+
+			if(time == 20000)
+			{
+				System.out.println("It is not your Phone ");
+				break;
+			}
+			System.out.println();
+			System.out.println("You have to wait for "+(time/1000)+ " seconds");
+			Thread.sleep(time);
+			time *=2;
+		}
+	}
+}
